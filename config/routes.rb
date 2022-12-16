@@ -4,63 +4,31 @@ Rails.application.routes.draw do
 
   devise_for :admins
   devise_for :customers
-  devise_for :users
 
   namespace :admin do
-    get 'orders/show'
-  end
-  namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-  end
-  namespace :admin do
-    get 'genres/index'
-    get 'genres/edit'
-  end
-  namespace :admin do
-    get 'items/index'
-    get 'items/new'
-    get 'items/show'
-    get 'items/edit'
-  end
-  namespace :admin do
     get 'homes/top'
+    resources :items, only: [:index, :new, :create, :show, :edit, :update]
+    resources :genres, only: [:index, :create, :edit, :update]
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :orders, only: [:show, :update]
+    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+    resources :sessions, omly: [:new, :create, :destroy]
   end
-  namespace :admin do
-    get 'sessions/new'
-  end
-  namespace :public do
-    get 'addresses/index'
-    get 'addresses/edit'
-  end
-  namespace :public do
-    get 'orders/new'
-    get 'orders/about'
-    get 'orders/index'
-    get 'orders/show'
-  end
-  namespace :public do
-    get 'cart_items/index'
-  end
-  namespace :public do
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/unsubscribe'
-  end
-  namespace :public do
-    get 'sessions/new'
-  end
-  namespace :public do
-    get 'registrations/new'
-  end
-  namespace :public do
-    get 'items/index'
-    get 'items/show'
-  end
-  namespace :public do
+
+  scope module: :public do
     get 'homes/top'
     get 'homes/about'
+    get 'customers/unsubscribe'
+    patch 'customers/withdrawal'
+    delete 'cart_items/destroy_all'
+    get 'orders/about'
+    post 'orders/confirm'
+    resources :items, only: [:index, :show]
+    resources :customers, only: [:show, :edit, :update]
+    resources :cart_items, only: [:index, :update, :destroy, :create]
+    resources :orders, only: [:new, :create, :index, :show]
+    resources :sessions, only: [:new, :create, :destroy]
+    resources :registrations, only: [:new, :create]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

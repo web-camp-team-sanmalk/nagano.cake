@@ -2,8 +2,8 @@
 <p>Find me in app/views/admin/items/new.html.erb</p>
 
 
-<div class="">
-  <div class="">
+<div class="container">
+  <div class="row">
     <div class="">
       <h2>商品新規登録</h2>
     </div>
@@ -28,17 +28,17 @@
           </div>
           <div class="form-group">
             <%= f.label :税抜価格 ,class:""  %>
-            <%= f.text_field :price ,class:""   %>
+            <%= f.text_field :price ,class:""   %>円
           </div>
           <div class="form-group">
             <%= f.label :販売ステータス ,class:""  %>
             <%= f.radio_button :is_active, 0, checkd: true %>販売中 <%#= f.radio_button :is_active, 0, checkd: true %>
-            <%= f.radio_button :is_active, false  %>販売停止
+            <%= f.radio_button :is_active, false  %>販売停止中
           </div>
            <div class="form-group">
              <%= f.submit "新規登録" ,class:""  %>
            </div>
-          
+
         <% end %>
       </div>
   </div>

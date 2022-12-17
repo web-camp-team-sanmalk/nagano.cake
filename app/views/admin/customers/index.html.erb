@@ -1,2 +1,23 @@
-<h1>Admin::Customers#index</h1>
-<p>Find me in app/views/admin/customers/index.html.erb</p>
+
+<h1>会員一覧</h1>
+<table class='tabel'>
+  <thead>
+    <tr>
+      <th>会員ID</th>
+      <th>氏名</th>
+      <th>メールアドレス</th>
+      <th>ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= customer.id %></td>
+        <td><%= link_to customer.full_name, admin_customer %></td>
+        <td><%= customer.email %></td>
+        <!--会員ステータス部分　enumを後で実装-->
+        <td><%= customer.is_deleted %></td>
+      </tr>
+  </tbody>
+</table>
+

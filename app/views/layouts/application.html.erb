@@ -9,10 +9,22 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  
+
   <body>
-    <%= render "layouts/header" %>
-    
+    <header>
+      <li>仮</li>
+        <li>
+          <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+        </li>
+
+        <li>
+          <%= link_to "新規登録", new_customer_registration_path %>
+        </li>
+        <li>
+          <%= link_to "ログイン", new_customer_session_path %>
+        </li>
+
+    </header>
     <%= yield %>
   </body>
 </html>

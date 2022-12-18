@@ -1,34 +1,34 @@
 <header>
-  <%= link_to root_path do %>
-    <%#= image_tag %>
-  <% end %>
+  <nav class="navbar navbar-expand-lg navbar-light ">
+    <div class="container">
+      <div class="navbar-brand p-3">
+        <%= link_to root_path do %>
+          <%#= image_tag %>
+        <% end %>
+      </div>
 
-  <% if customer_signed_in? %>
-
-  <li>
-    ようこそ！<%= current_customer.last_name %><%= current_customer.first_name %>さん！！
-  </li>
-  <li><%= link_to " マイページ", customer_path(current_customer) %></li>
-  <li><%= link_to " 商品一覧", items_path %></li>
-  <li><%= link_to " カート", cart_items_path %></li>
-  <li><%= link_to " ログアウト", destroy_customer_session_path, method: :delete %></li>
-
-  <% elsif admin_signed_in? %>
-
-  <li><%= link_to "商品一覧", admin_items_path %></li>
-  <li><%= link_to "会員一覧", admin_customers_path %></li>
-  <li><%#= link_to "注文履歴一覧", admin_order_path %></li>
-  <li><%= link_to "ジャンル一覧", admin_genres_path %></li>
-  <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
-
-  <% else %>
-
-  <li>
-    ようこそ、ゲストさん！
-  </li>
-  <li><%= link_to " About", homes_about_path %></li>
-  <li><%= link_to " 商品一覧", items_path %></li>
-  <li><%= link_to " 新規登録", new_customer_registration_path %></li>
-  <li><%= link_to " ログイン", new_customer_session_path %></li>
-  <% end %>
+      <ul class="navbar-nav ml-auto">
+        <% if customer_signed_in? %>
+          <li class="nav-item mr-5 pt-2">
+            ようこそ！<%= current_customer.last_name %><%= current_customer.first_name %>さん！！
+          </li>
+          <li class="nav-item"><%= link_to " マイページ", customer_path(current_customer), class: 'fas fa-house-user' %></li>
+          <li class="nav-item"><%= link_to " 商品一覧", items_path, class: 'fas fa-cheese' %></li>
+          <li class="nav-item"><%= link_to " カート", cart_items_path, class: 'fas fa-cart-plus' %></li>
+          <li class="nav-item"><%= link_to " ログアウト", destroy_customer_session_path, method: :delete, class: 'fas fa-sign-out-alt' %></li>
+        <% elsif admin_signed_in? %>
+          <li class="nav-item"><%= link_to "商品一覧", admin_items_path, class: 'fas fa-cheese' %></li>
+          <li class="nav-item"><%= link_to "会員一覧", admin_customers_path, class: 'fas fa-users' %></li>
+          <li class="nav-item"><%#= link_to "注文履歴一覧", admin_order_path, class: 'fas fa-history' %></li>
+          <li class="nav-item"><%= link_to "ジャンル一覧", admin_genres_path, class: 'fas fa-list-alt' %></li>
+          <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'fas fa-sign-out-alt' %></li>
+        <% else %>
+          <li class="nav-item"><%= link_to " About", homes_about_path, class: 'btn btn-light fas fa-house-user' %></li>
+          <li class="nav-item"><%= link_to " 商品一覧", items_path, class: 'btn btn-light fas fa-cheese' %></li>
+          <li class="nav-item"><%= link_to " 新規登録", new_customer_registration_path, class: 'btn btn-light fas fa-user-plus' %></li>
+          <li class="nav-item"><%= link_to " ログイン", new_customer_session_path, class: 'btn btn-light fas fa-sign-in-alt' %></li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
 </header>

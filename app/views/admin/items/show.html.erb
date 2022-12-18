@@ -8,7 +8,7 @@
       <h2>商品詳細</h2>
     </div>
       <div class="">
-        <%= image_tag @item.id.%><!--rbに画像変更をかく-->
+        <%= image_tag @item.image %><!--rbに画像変更をかく-->
       </div>
         <table class="table">
           <tobody>
@@ -26,11 +26,11 @@
             </tr>
             <tr>
               <td class="">税込価格<br>(税抜価格)</td>
-              <td class=""><%= @item.price %>(<%= @item.order_detail_price %>)円</td>
+              <td class=""><%= @item.price %>(<%#= @item.order_detail_price %>)円</td>
             </tr>
             <tr>
               <td class="">販売ステータス</td>
-              <% if item.is_active == true  %>
+              <% if @item.is_active == true  %>
                 <td class=""><%=%>販売中</td>
               <% else %>
                 <td class=""><%=%>販売停止</td>

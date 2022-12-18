@@ -22,7 +22,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders, only: [:show, :update]
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
-    resources :sessions, omly: [:new, :create, :destroy]
+    resources :sessions, only: [:new, :create, :destroy]
   end
 
   scope module: :public do

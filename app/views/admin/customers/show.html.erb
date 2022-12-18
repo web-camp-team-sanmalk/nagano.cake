@@ -29,8 +29,14 @@
     <p><%= customer.email %></p>
   </div>
   <div>
-    <p>会員ステーション</p>
-    <p><%= customer.is_deleted %></p>
+    <p>会員ステータス</p>
+    <p>
+      <% if customer.is_deleted == false %>
+        有効
+      <% else %>
+        退会
+      <% end %>
+    </p>
   </div>
 
   <div>

@@ -16,8 +16,16 @@
         <td><%= link_to customer.full_name, admin_customer %></td>
         <td><%= customer.email %></td>
         <!--会員ステータス部分　enumを後で実装-->
-        <td><%= customer.is_deleted %></td>
+        <td>
+          <% if customer.is_deleted == false %>
+            有効
+          <% else %>
+            退会
+          <% end %>
+        </td>
       </tr>
+    <% end %>
   </tbody>
 </table>
+<%= paginate @customers %>
 

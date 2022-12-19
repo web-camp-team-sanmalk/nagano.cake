@@ -26,6 +26,7 @@ class Admin::ItemsController < ApplicationController
     @item = Item.new(item_params)
     if  @item.save
       redirect_to admin_item_path(@item.id)
+      flash[:notice] = "成功しました"
     else
       render :new
     end

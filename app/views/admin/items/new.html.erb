@@ -1,5 +1,3 @@
-<h1>Admin::Items#new</h1>
-<p>Find me in app/views/admin/items/new.html.erb</p>
 
 
 <div class="container">
@@ -29,15 +27,15 @@
             </div>
             <div class="form-group">
               <%= f.label :販売ステータス ,class:""  %>
-              <%= f.radio_button :is_active, 0, checkd: true %>販売中 <%#= f.radio_button :is_active, 0, checkd: true %>
-              <%= f.radio_button :is_active, false  %>販売停止中
+              <%= f.radio_button :is_active, :true  %>販売中 <%#= f.radio_button :is_active, 0, checkd: true %>
+              <%= f.radio_button :is_active, :false  %>販売停止中
             </div>
              <div class="form-group">
-               <%= f.submit "新規登録" ,class:""  %>
+               <%= f.submit "新規登録" ,class:"btn btn-success btn-lg"  %>
              </div>
           <% end %>
-  
+
     </div>
   </div>
-  
-  
+
+

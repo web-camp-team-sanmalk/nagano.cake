@@ -1,2 +1,18 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+
+<div class="container">
+      <div class="row">
+        <%= image_tag @item.image, size: '250x250' %><!--rbに画像変更をかく-->
+        　<%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %><!--注文するためのフォーム-->
+            <p class=""> <%= @item.name %></p>
+             <p class=""> <%= @item.introduction %></p>
+             <p class="">¥ <%= @item.price.to_s(:delimited) %><span class="small">(税込)</span></p>
+
+
+        <div class="row">
+            <!--個数選択プルダウン-->
+          <%= link_to "カートに入れる", edit_admin_item_path(@item.id) ,class:"btn btn-success btn-lg"  %>
+        </div>
+        <% end %>
+  </div>
+  </div>
+

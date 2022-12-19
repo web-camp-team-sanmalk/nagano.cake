@@ -2,7 +2,7 @@
 <div class='container px-5 px-sm-0'>
   <div class='col-md-12'>
     <h1>会員一覧</h1>
-    <table class='tabel'>
+    <table class='table'>
       <thead>
         <tr>
           <th>会員ID</th>
@@ -15,15 +15,13 @@
         <% @customers.each do |customer| %>
           <tr>
             <td><%= customer.id %></td>
-            <td><%= link_to customer.full_name, admin_customer %></td>
+            <td><%= link_to customer.full_name, admin_customer_path(customer.id) %></td>
             <td><%= customer.email %></td>
-            <td>
-              <% if customer.is_deleted == false %>
-              有効
-              <% else %>
-              退会
-              <% end %>
-            </td>
+            <% if customer.is_deleted == false %>
+              <td class='text-success'>有効</td>
+            <% else %>
+              <td class='text-secoundary'>退会</td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>

@@ -1,2 +1,42 @@
-<h1>Admin::Items#index</h1>
-<p>Find me in app/views/admin/items/index.html.erb</p>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class=""><!--商品一覧css-->
+      <h2>商品一覧</h2>
+    </div>
+      <div class=""><!--右上のプラス＋ボタン-->
+        <%= link_to "+", new_admin_item_path, class:"" %>
+      </div>
+        <table class="table table-hover table-inverse">
+          <thead>
+            <tr>
+              <th>商品ID</th>
+              <th>商品名</th>
+              <th>税抜価格</th>
+              <th>ジャンル</th>
+              <th>ステータス</th>
+            </tr>
+          </thead>
+          <tobody>
+            <% @items.each do |item| %>
+            <tr>
+              <td><%= item.id %></td>
+              <td><%= link_to item.name, admin_item_path(item.id) %></td>
+              <td><%= item.price.to_s(:delimited) %></td><!--.to_s(:delimited)はカンマつけるメゾット-->
+              <td><%= item.genre.name %></td>
+              <% if item.is_active == true  %>
+                <td class="">販売中</td>
+              <% else %>
+                <td class="">販売停止</td>
+              <% end %>
+            </tr>
+            <% end %>
+          </tobody>
+        </table>
+    </div>
+  </div>
+    
+    
+    

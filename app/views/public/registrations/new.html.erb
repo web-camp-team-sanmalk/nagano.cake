@@ -1,0 +1,62 @@
+<h2>新規会員登録</h2>
+
+<%= form_with model: @customer,  url: customer_registration_path do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="form-group">
+        <%= f.label :お名前 %>
+        <div class="row">
+          <%= f.text_field :last_name, placeholder:"姓 例）長野" %>
+          <%= f.text_field :first_name, placeholder:"名 例）恵子" %>
+        </div>
+        <div class="row">
+          <%= f.text_field :last_name_kana, placeholder:"セイ 例）ナガノ" %>
+          <%= f.text_field :first_name_kana, placeholder:"メイ 例）ケイコ" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :郵便番号 %>
+        <%= f.text_field :postal_code, placeholder:"例）1510001" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :住所 %>
+        <%= f.text_field :address %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :電話番号 %>
+        <%= f.text_field :telephone_number, placeholder:"例）08032436501" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :メールアドレス %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"例）example@mail" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :パスワード %>
+        <%= f.password_field :password, placeholder:"最低６文字必要です。", autocomplete: "new-password" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :パスワード確認 %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
+
+      <div class="row">
+        <%= f.submit "会員登録" %>
+      </div>
+    <% end %>
+    
+    <h2>既に登録済みの方</h2>
+    <div class="row">
+      <div class="offset-9">
+        <%= link_to "こちら", new_customer_session_path %>
+        からログインしてください
+      </div>
+    </div>
+
+<!--<3%= render "public/shared/links" %>-->
+

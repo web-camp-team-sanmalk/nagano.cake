@@ -8,7 +8,7 @@
   <div class="row my-3">
     <div class="offset-3 col-6">
 
-    <%= form_with model: @customer do |f| %>
+    <%= form_with model: @customer, url: customer_path do |f| %>
       <div class="form-group">
         <%= f.label :氏名, class: "brown-border px-3" %>
         <div class="row">

@@ -7,9 +7,8 @@
     <div class="">
       <h2>商品詳細</h2>
     </div>
-      <div class="">
-        <%= image_tag @item.image %><!--rbに画像変更をかく-->
-      </div>
+      <div class="row">
+        <%= image_tag @item.image, size: '250x250' %><!--rbに画像変更をかく-->
         <table class="table">
           <tobody>
             <tr>
@@ -38,6 +37,7 @@
             </tr>
           </tobody>
         </table>
+      </div>
         <div class="">
           <%= link_to "編集する", edit_admin_item_path(@item.id) ,class:""  %>
         </div>

@@ -3,42 +3,41 @@
 
 
 <div class="container">
-  <div class="row">
-    <div class="">
-      <h2>商品新規登録</h2>
+  <div class=""><h3>商品新規登録</h3></div>
+    <div class="row">
+      <%= form_with model: @item, url:admin_items_path, local: true do |f| %><!--モデル属性に無い入力フォームを追加できる.modelとurlの記述により-->
+        <div class="form-group ">
+          <%= f.label :商品画像 %>
+          <%= f.file_field :image, accept:"image/*" %> <!--accept: "image/*"は画像ファイルのみ投稿可能-->
+            </div>
+            <div class="form-group">
+              <%= f.label :商品名 ,class:""  %>
+              <%= f.text_field :name ,class:"form-control"%>
+            </div>
+            <div class="form-group">
+              <%= f.label :商品説明 ,class:""  %>
+              <%= f.text_area :introduction ,class:"form-control"  %>
+            </div>
+            <div class="form-group">
+              <%= f.label :ジャンル ,class:""  %>
+              <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択してください--" %>
+              <%#= f.collection_select :保存先のカラム名, テーブル（モデル）名.all, :実際にDBに保存させるカラム名, :選択肢に用いるカラム名, include_blank: "選択して下さい" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :税抜価格 ,class:""  %>
+              <%= f.text_field :price ,class:"form-control" %><span class="">円</span>
+            </div>
+            <div class="form-group">
+              <%= f.label :販売ステータス ,class:""  %>
+              <%= f.radio_button :is_active, 0, checkd: true %>販売中 <%#= f.radio_button :is_active, 0, checkd: true %>
+              <%= f.radio_button :is_active, false  %>販売停止中
+            </div>
+             <div class="form-group">
+               <%= f.submit "新規登録" ,class:""  %>
+             </div>
+          <% end %>
+  
     </div>
-      <%= form_with model: @item, url:admin_item_path, local: true do |f| %><!--モデル属性に無い入力フォームを追加できる.modelとurlの記述により-->
-        <div class="row">
-          <div class="form-group">
-            <%= f.label :商品画像 %>
-            <%= f.file_field :image, accept:"image/*" %> <!--accept: "image/*"は画像ファイルのみ投稿可能-->
-          </div>
-          <div class="form-group">
-            <%= f.label :商品名 ,class:""  %>
-            <%= f.text_field :name ,class:""   %>
-          </div>
-          <div class="form-group">
-            <%= f.label :商品説明 ,class:""  %>
-            <%= f.text_area :introduction ,class:""  %>
-          </div>
-          <div class="form-group">
-            <%= f.label :ジャンル ,class:""  %>
-            <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択してください--" %>
-            <%#= f.collection_select :保存先のカラム名, テーブル（モデル）名.all, :実際にDBに保存させるカラム名, :選択肢に用いるカラム名, include_blank: "選択して下さい" %>
-          </div>
-          <div class="form-group">
-            <%= f.label :税抜価格 ,class:""  %>
-            <%= f.text_field :price ,class:""   %>円
-          </div>
-          <div class="form-group">
-            <%= f.label :販売ステータス ,class:""  %>
-            <%= f.radio_button :is_active, 0, checkd: true %>販売中 <%#= f.radio_button :is_active, 0, checkd: true %>
-            <%= f.radio_button :is_active, false  %>販売停止中
-          </div>
-           <div class="form-group">
-             <%= f.submit "新規登録" ,class:""  %>
-           </div>
-        <% end %>
-      </div>
   </div>
-</div>
+  
+  

@@ -21,7 +21,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders, only: [:show, :update]
-    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+    
     resources :sessions, only: [:new, :create, :destroy]
   end
 
@@ -39,6 +39,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resources :orders, only: [:new, :create, :index, :show]
     resources :sessions, only: [:new, :create, :destroy]
     resources :registrations, only: [:new, :create]
+    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

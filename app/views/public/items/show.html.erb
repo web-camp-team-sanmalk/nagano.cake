@@ -1,7 +1,7 @@
 
 <div class="container">
       <div class="row">
-        <%= image_tag @item.image, size: '250x250' %><!--rbに画像変更をかく-->
+        <%= image_tag @item.image, size: '250x250' %>
         　<%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %><!--注文するためのフォーム-->
             <p class=""> <%= @item.name %></p>
              <p class=""> <%= @item.introduction %></p>

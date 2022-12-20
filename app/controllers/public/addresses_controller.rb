@@ -3,24 +3,20 @@ class Public::AddressesController < ApplicationController
   # before_action :ensure_correct_customer
 
   def index
-    @customer = current_customer
     @addresses = current_customer.addresses.all
     @address = Address.new
   end
 
   def edit
-    @customer = current_customer
     @address = Address.find(params[:id])
   end
 
   def create
-    @customer = current_customer
-    @address = current_customer.addresses.new(address_params)
-    @address.customer_id = @customer.id
+    @address = Address.new(address_params)
+    @address.customer_id = current_customer.id
     if @address.save
-      redirect_to addresses_path
+      redirect_to customer_path(current_customer.id)
     else
-      @customer = current_customer
       @addresses = current_customer.addresses.all
       @address = Address.new
       render :index
@@ -28,7 +24,6 @@ class Public::AddressesController < ApplicationController
   end
 
   def update
-    @customer = current_customer
     @address = Address.find(params[:id])
     if @address.update(address_params)
       redirect_to addresses_path
@@ -38,7 +33,6 @@ class Public::AddressesController < ApplicationController
   end
 
   def destroy
-    @customer = current_customer
     @address = Address.find(params[:id])
     @address.destroy
     @address = Address.new

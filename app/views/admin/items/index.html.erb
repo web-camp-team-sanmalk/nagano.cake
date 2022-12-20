@@ -3,7 +3,7 @@
 
 <div class="container">
   <div class="row">
-    <div class=""><!--商品一覧css-->
+    <div class="">
       <h2>商品一覧</h2>
     </div>
       <div class=""><!--右上のプラス＋ボタン-->
@@ -21,22 +21,22 @@
           </thead>
           <tobody>
             <% @items.each do |item| %>
-            <tr>
-              <td><%= item.id %></td>
-              <td><%= link_to item.name, admin_item_path(item.id) %></td>
-              <td><%= item.price.to_s(:delimited) %></td><!--.to_s(:delimited)はカンマつけるメゾット-->
-              <td><%= item.genre.name %></td>
-              <% if item.is_active == true  %>
-                <td class="">販売中</td>
-              <% else %>
-                <td class="">販売停止</td>
-              <% end %>
-            </tr>
+              <tr>
+                <td><%= item.id %></td>
+                <td><%= link_to item.name, admin_item_path(item.id) %></td>
+                <td><%= item.price.to_s(:delimited) %></td><!--.to_s(:delimited)はカンマつけるメゾット-->
+                <td><%= item.genre.name %></td>
+                <% if item.is_active == true  %>
+                  <td class="">販売中</td>
+                <% else %>
+                  <td class="">販売停止</td>
+                <% end %>
+              </tr>
             <% end %>
           </tobody>
         </table>
-    </div>
   </div>
+</div>
     
     
     

@@ -1,4 +1,6 @@
 
+<%= render 'error', item: @item  %>
+
 <div class="container">
   <div class=""><h3>商品編集</h3></div>
     <div class="row">
@@ -26,7 +28,7 @@
           </div>
           <div class="form-group">
             <%= f.label :販売ステータス ,class:""  %>
-            <%= f.radio_button :is_active, :true %>販売中 <%#= f.radio_button :is_active, 0, checkd: true %>
+            <%= f.radio_button :is_active, :true %>販売中 
             <%= f.radio_button :is_active, :false  %>販売停止中
           </div>
            <div class="form-group">

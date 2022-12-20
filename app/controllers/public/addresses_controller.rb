@@ -15,7 +15,7 @@ class Public::AddressesController < ApplicationController
     @address = Address.new(address_params)
     @address.customer_id = current_customer.id
     if @address.save
-      redirect_to customer_path(current_customer.id)
+      redirect_to addresses_path
     else
       @addresses = current_customer.addresses.all
       @address = Address.new

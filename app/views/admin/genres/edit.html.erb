@@ -1,10 +1,18 @@
-<h1>ジャンル編集</h1>
-<%= form_with model: [:admin, @genre], local: true do |f| %>
-<thead>
-  <tr>
-    <th>ジャンル名</th>
-    <th><%= f.text_field :name %></th>
-    <th><%=f.submit "変更を保存" %></th>
-  </tr>
-</thead>
-<% end %>
+<h4 class="bg-light text-dark">ジャンル編集</h4>
+<div class="container my-4">
+  <div class="row">
+    <div class="col-6">
+      <%= form_with model: [:admin, @genre], local: true do |f| %>
+      <table class="col-sm-9 col-lg-12">
+        <thead>
+          <tr>
+            <th>ジャンル名</th>
+            <th><%= f.text_field :name %></th>
+            <th><%=f.submit "変更を保存", class:"btn btn-success" %></th>
+          </tr>
+        </thead>
+      </table>
+      <% end %>
+    </div>
+  </div>
+</div>

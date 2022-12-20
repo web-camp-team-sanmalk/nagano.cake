@@ -18,14 +18,20 @@ class Public::CustomersController < ApplicationController
   end
 
   def unsubscribe
+    @customer = current_customer
   end
 
   def withdrawal
+     @customer = current_customer
+       if @customer.update(is_deleted: true)
+          sign_out current_customer 
+       end
+       redirect_to root_path
   end
   
   private
 
   def customer_params
-   params.require(:customer).permit(:is_enabled, :last_name, :first_name, :last_name_kana, :first_name_kana,:telephone_number, :email, :password, :postal_code, :address)
+   params.require(:customer).permit(:is_deleted, :last_name, :first_name, :last_name_kana, :first_name_kana,:telephone_number, :email, :password, :postal_code, :address)
   end
 end

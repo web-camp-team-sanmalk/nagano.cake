@@ -1,2 +1,51 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="jumbotron">
+  <div class ="container-fluid">
+    <div ="row">
+      <div class="col-sm-4">
+        <div class="card" style="width: 18rem;">
+          <div class="card-header">ジャンル検索</div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">ケーキ</li>
+                  <li class="list-group-item">焼き菓子</li>
+                  <li class="list-group-item">プリン</li>
+                  <li class="list-group-item">キャンディー</li>
+              </ul>
+        </div>
+      </div>
+    </div>
+     <div class="row">
+      <div class="col-sm-8">
+        <div calss ="text">
+          <a>ようこそ、ながのCAKEへ！</a><br>
+          <a>このサイトは、ケーキ販売のECサイトになります。</a><br>
+          <a>会員でない方も商品の閲覧はできますが、</a><br>
+          <a>購入には会員登録が必要になります。</a><br>
+        </div>
+       </div>
+      </div>
+      <div class ="row">
+        <div class="col-sm-8">
+          <h3><strong>新着商品</strong></h3>
+          <div class="card-deck">
+            <!--カードを詳細リンクにする記述-->
+              <div class="card" style="width: 18rem;">
+                <% @item.each do |item| %>
+                  <%= link_to item_path(item.id) do %>
+                    <% if item.image.attached? %>
+                      <%= image_tag item.image, size: '100x100' %>
+                    <% else %>
+                      <%= image_tag "no_image.jpeg" %>
+                    <% end %>
+                  <% end %>
+                <div class="card-body">
+                    <p class="card-text"><%= item.name %></p>
+                    <p class="card-text">¥<%= (item.price.to_s(:delimited)) %></p>
+                <% end %>
+                </div>
+              </div>
+            
+        　</div>
+        </div>
+      </div>
+  </div>
+</div>

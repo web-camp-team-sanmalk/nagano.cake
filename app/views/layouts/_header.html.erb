@@ -1,0 +1,34 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light ">
+    <div class="container">
+      <div class="navbar-brand">
+        <%= link_to root_path do %>
+          <%= image_tag 'logo.png', size:"200x200" %>
+        <% end %>
+      </div>
+
+      <ul class="navbar-nav m-3">
+        <% if customer_signed_in? %>
+          <li class="nav-item mr-5 pt-2">
+            ようこそ！<%= current_customer.last_name %><%= current_customer.first_name %>さん！！
+          </li>
+          <li button type="botton" class="m-3 btn btn-outline-secondary"><%= link_to " マイページ", customer_path(current_customer), class: 'text-dark align-middle' %></li>
+          <li button type="botton" class="m-3 btn btn-outline-secondary"><%= link_to " 商品一覧", items_path, class: 'text-dark align-middle' %></li>
+          <li button type="botton" class="m-3 btn btn-outline-secondary"><%= link_to " カート", cart_items_path, class: 'text-dark align-middle' %></li>
+          <li button type="botton" class="m-3 btn btn-outline-secondary"><%= link_to " ログアウト", destroy_customer_session_path, method: :delete, class: 'text-dark align-middle' %></li>
+        <% elsif admin_signed_in? %>
+          <li button type="botton" class="m-3 btn btn-outline-secondary"><%= link_to "商品一覧", admin_items_path, class: 'text-dark align-middle' %></li>
+          <li button type="botton" class="m-3 btn btn-outline-secondary"><%= link_to "会員一覧", admin_customers_path, class: 'text-dark align-middle' %></li>
+          <li button type="botton" class="m-3 btn btn-outline-secondary"><%= link_to "注文履歴一覧", admin_homes_top_path, class: 'text-dark align-middle' %></li>
+          <li button type="botton" class="m-3 btn btn-outline-secondary"><%= link_to "ジャンル一覧", admin_genres_path, class: 'text-dark align-middle' %></li>
+          <li button type="botton" class="m-3 btn btn-outline-secondary"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'text-dark align-middle' %></li>
+        <% else %>
+          <li button type="botton" class="m-3 btn btn-outline-secondary"><%= link_to " About", homes_about_path, class: 'text-dark align-middle' %></li>
+          <li button type="botton" class="m-3 btn btn-outline-secondary"><%= link_to " 商品一覧", items_path, class: 'text-dark align-middle' %></li>
+          <li button type="botton" class="m-3 btn btn-outline-secondary"><%= link_to " 新規登録", new_customer_registration_path, class: 'text-dark align-middle' %></li>
+          <li button type="botton" class="m-3 btn btn-outline-secondary"><%= link_to " ログイン", new_customer_session_path, class: 'text-dark align-middle' %></li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+</header>

@@ -1,5 +1,6 @@
 class Public::OrdersController < ApplicationController
   def new
+    @order = Order.new
   end
 
   def about
@@ -16,5 +17,9 @@ class Public::OrdersController < ApplicationController
 
   def create
   end
+
+  private
+  def order_params
+    params.require()
 
 end

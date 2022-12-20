@@ -1,12 +1,12 @@
 
+<div><%= flash[:notice] %></div>
 
 <div class="container">
+  <div class="row">
+    <h3>商品詳細</h3>
+  </div>
     <div class="row">
-      <h3>商品詳細</h3>
-    </div>
-      <div class="row">
-        <%= image_tag @item.image, size: '250x250' %><!--rbに画像変更をかく-->
-
+      <%= image_tag @item.image, size: '250x250' %>
         <table class="table">
           <tobody>
             <tr>
@@ -35,9 +35,8 @@
             </tr>
           </tobody>
         </table>
-
-        <div class="">
-          <%= link_to "編集する", edit_admin_item_path(@item.id) ,class:"btn btn-success btn-lg"  %>
-        </div>
-        </div>
-  </div>
+          <div class="">
+            <%= link_to "編集する", edit_admin_item_path(@item.id) ,class:"btn btn-success btn-lg"  %>
+          </div>
+    </div>
+</div>

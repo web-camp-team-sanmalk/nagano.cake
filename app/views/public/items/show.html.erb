@@ -1,18 +1,27 @@
 
 <div class="container">
-      <div class="row">
-        <%= image_tag @item.image, size: '250x250' %>
+  <div class="row">
+    <div class="col-md-2"></div>
+    
+    <div class="col-md-4">
+    <%= image_tag @item.image, size: '250x200' %>
+    </div>
 
-        　<%= form_with model: @cart_item, url: cart_items_path do |f| %><!--注文するためのフォーム-->
-        　  <%= f.hidden_field :item_id, :value => @item.id  %>
-            <p class=""> <%= @item.name %></p>
-             <p class=""> <%= @item.introduction %></p>
-             <p class="">¥ <%= @item.price.to_s(:delimited) %><span class="small">(税込)</span></p>
-             <p class=""> <%= f.select :amount, *[1..10] %> 個 </p>
-             <div class="row">
-              <%= f.submit "カートに入れる", class: "btn btn-success btn-lg"  %>
-             </div>
-          <% end %>
+    <%= form_with model: @cart_item, url: cart_items_path do |f| %><!--注文するためのフォーム-->
+      <%= f.hidden_field :item_id, :value => @item.id  %>
+        <p class="h4 font-weight-bold"> <%= @item.name %></p>
+        <p class=""> <%= @item.introduction %></p>
+        <p class="h5 font-weight-bold">¥ <%= @item.price.to_s(:delimited) %><span class="small">(税込)</span></p>
+        
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.select :amount, *[1..10], include_blank: "個数選択" %> 個
+          </div>
+          <div class="col-md-6">
+            <%= f.submit "カートに入れる", class: "btn btn-success"  %>
+          </div>
+        </div>
+      <% end %>
   </div>
   </div>
 

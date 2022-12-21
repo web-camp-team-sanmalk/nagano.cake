@@ -16,8 +16,8 @@
           <tr>
             <td><%= link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S'), admin_order_path(order) %></td>
             <td><%= order.customer.last_name + order.customer.first_name %></td>
-            <td><%= order.order_items.sum(:quantity) %></td>
-            <td><%= order.buy_status %></td>
+            <td><%= order.order_details.sum(:amount) %></td>
+            <td><%= order.status %></td>
           </tr>
         <% end %>
         </tbody>
@@ -29,5 +29,5 @@
     <div class="center-block mx-auto">
       <%= paginate @orders_page %>
     </div>
-  </div>  
+  </div>
 </div>

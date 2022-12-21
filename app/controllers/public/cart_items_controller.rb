@@ -1,14 +1,20 @@
 class Public::CartItemsController < ApplicationController
-  
+
   def index
     @cart_items = current_customer.cart_items.all
+    @total = 0
+    @cart_items.each do |cart_item|
+    @total = cart_item.subtotal + @total
+  end
+    #@total = @cart_items.inject(0) { |sum, item| sum + item.add_tax_price }
   end
 
   def update
-    
-    
+      @cart_item = CartItem.find(params[:id])
+      @cart_item.update(cart_item_params)
+      redirect_to cart_items_path
   end
-  
+
    def destroy
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
@@ -34,7 +40,7 @@ class Public::CartItemsController < ApplicationController
           @cart_item.save
           redirect_to cart_items_path
   end
- 
+
 
 
   private

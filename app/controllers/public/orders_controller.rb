@@ -31,6 +31,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
+    @cart_items = current_customer.cart_items.all
   end
 
   private

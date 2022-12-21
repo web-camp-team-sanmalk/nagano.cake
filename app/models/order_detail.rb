@@ -19,8 +19,4 @@ class OrderDetail < ApplicationRecord
      end
   end
 
-  def subtotal
-    self.item.tax_included_price * self.quantity
-  end
-
 end

@@ -4,6 +4,7 @@ class Order < ApplicationRecord
   has_many :order_details, dependent: :destroy
 
   enum payment_method: { credit_card: 0, transfer: 1 }
+
   enum status: {入金待ち:0, 入金確認:1,  製作中:2, 発送準備中:3, 発送済み:4}
 
   def shipping_cost
@@ -14,6 +15,7 @@ class Order < ApplicationRecord
     shipping_cost + customer.cart_items.sum(&:subtotal)
   end
 
+
   def order_details_status_auto_update
     if self.status == "入金確認"
       self.order_details.each do |order_details|
@@ -23,6 +25,7 @@ class Order < ApplicationRecord
     elsif self.status == "入金待ち"
       self.order_details.each do |order_details|
         order_details.update(production_status: "着手不可")
+
       end
     end
   end

@@ -5,6 +5,7 @@ class OrderDetail < ApplicationRecord
 
   enum production_status: {着手不可:0, 製作待ち:1,  製作中:2, 製作完了:3}
 
+
   def production_status_auto_update
     if self.production_status == "製作中"
       self.order.update(status: "製作中")
@@ -22,5 +23,6 @@ class OrderDetail < ApplicationRecord
   def subtotal
     self.item.tax_included_price * self.quantity
   end
+
 
 end

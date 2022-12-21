@@ -28,16 +28,38 @@ class Public::OrdersController < ApplicationController
       @order.address = @address.address
       @order.name = @address.name
     end
+    # 商品合計金額
+    @total = 0
+    @cart_items.each do |cart_item|
+      @total = cart_item.item.add_tax_price * cart_item.amount + @total
+    end
   end
 
   def create
     @cart_items = current_customer.cart_items.all
+    @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
+    if @order.save
+      @cart_items.each do |cart_item|
+        order_detail = OrderDetail.new
+        order_detail.order_id = @order.id
+        order_detail.item_id = cart_item.item_id
+        order_detail.amount = cart_item.amount
+        order_detail.price = cart_item.item.add_tax_price * cart_item.amount
+        order_detail.save
+      end
+      redirect_to orders_about_path
+      @cart_items.destroy_all
+    else
+      @order = Order.new(order_params)
+      render :new
+    end
   end
 
   private
 
   def order_params
-    params.require(:order).permit(:payment_method, :postal_code, :address, :name)
+    params.require(:order).permit(:payment_method, :postal_code, :address, :name, :shipping_cost, :total_payment)
   end
 
 end

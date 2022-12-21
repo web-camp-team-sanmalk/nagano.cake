@@ -22,7 +22,7 @@ class Public::CartItemsController < ApplicationController
   end
 
 
-   def create
+  def create
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.customer_id = current_customer.id
 # カートに別タイミングで同商品を入れたときにカート内で個数が統合されるコード
@@ -33,7 +33,8 @@ class Public::CartItemsController < ApplicationController
     end
           @cart_item.save
           redirect_to cart_items_path
-      end
+  end
+ 
 
 
   private

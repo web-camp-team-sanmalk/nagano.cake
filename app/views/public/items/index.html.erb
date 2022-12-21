@@ -3,12 +3,12 @@
   <div class="row">
     <h2>商品一覧<span class="small">(全 <%= @items.count %> 件)</span></h2>
   </div>
-    <div class="row">
+    <div class="row p-auto">
       <% @items.each do |item| %>
         <%= link_to item_path(item.id) do %>
-          <%= image_tag item.image, size: '250x250' %>
-          <p class=""><%=item.name %></p>
-          <p class="">¥<%= item.price.to_s(:delimited) %></p>
+          <%= image_tag item.image, size: '150x100' %>
+          <p class="text-dark"><%=item.name %></p>
+          <p class="text-dark">¥<%= item.price.to_s(:delimited) %></p>
       <% end %>
         <% end %>
    </div>

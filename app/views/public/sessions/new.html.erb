@@ -1,51 +1,32 @@
-<div class="container my-5">
 
+<div class="container">
+  <mark class="h4 bg-light ml-5">ログイン</mark>
   <div class="row">
-    <div class="offset-3">
-      <strong class="red-border px-3 pb-1">会員の方はこちらからログイン</strong>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="offset-4 col-4">
-      <%= form_with model: @customer, url: customer_session_path do |f| %>
-        <div class="form-goup mt-5">
-          <%= f.label :メールアドレス %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <div class="text-center py-5 px-3 col-md-6 mx-auto rounded">
+      <mark class="h6 bg-light">
+        会員の方はこちらからログイン
+      </mark>
+      <div>
+        <br>
+      </div>
+        <%= form_with model: @customer, url: customer_session_path do |f| %>
+          <div class="field mb-4">
+            <%= f.label :メールアドレス %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          </div>
+          <diV class="field mb-4">
+            <%= f.label :パスワード %>
+            <%= f.password_field :password, autocomplete: "current-password" %>
+          </diV>
+          <%= f.submit "ログイン", class: "btn btn-primary" %>
+        <% end %>
+        <div class="mt-5">
+          <mark class="h6 bg-light">会員登録がお済みでない方</mark>
+        <div>
+          <br>
         </div>
-
-        <div class="form-goup mt-3">
-          <%= f.label :パスワード %>
-          <%= f.password_field :password, autocomplete: "current-password" %>
         </div>
-
-        <div class="row mt-1">
-          <%= link_to "→ パスワードをお忘れの方はこちら" %>
-        </div>
-
-        <div class="offset-2 col-8">
-          <%= f.submit "Log in" %>
-        </div>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="offset-3 mt-5">
-      <strong class="red-border px-3 pb-1">登録がお済みでない方</strong>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="offset-4 mx-auto mt-5">
-      <%= link_to "こちら", new_customer_registration_path %>
-      から新規登録を行ってください。
+        <%= link_to "こちら", new_customer_registration_path %>  から新規登録を行ってください。
     </div>
   </div>
 </div>
-
-
-
-  </div>
-</div>
-<!--<#%= render "publics/shared/links" %>-->

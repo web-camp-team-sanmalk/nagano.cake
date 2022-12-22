@@ -12,41 +12,44 @@
               </ul>
         </div>
       </div>
-    　<div class="col-sm-9">
+    　<div class="col-sm-8 ">
         <div calss ="d-flex align-items-center" style="height:300px">
-          ようこそ、ながのCAKEへ！<br>
-          このサイトは、ケーキ販売のECサイトになります<br>
-          会員でない方も商品の閲覧はできますが、<br>
-          購入には会員登録が必要になります。<br>
+          <div class="card" style="max-width: 500px;">
+          <img class="card-img img-fluid" src="/assets/home.png">
+            <div class="card-img-overlay">
+              <p class="h5 font-weight-light text-light pt-5">
+              ようこそ、ながのCAKEへ！<br>
+              このサイトは、ケーキ販売のECサイトになります。<br>
+              会員でない方も商品の閲覧はできますが、<br>
+              購入には会員登録が必要になります。<br>
+              </p>
+            </div>
+          </div>
         </div>
-      
-      
-        
+
           <h3><strong>新着商品</strong></h3>
           <div class="card-deck">
             <!--カードを詳細リンクにする記述-->
-            
+
               <div class="card-group">
-                
                 <% @item.each do |item| %>
                   <%= link_to item_path(item.id) do %>
                     <div class="card-body">
-                    <p class="card-text">
-                      <%= image_tag item.image, size: '100x100' %>
-                    </p>
-                    <p class="card-text"><%= item.name %></p>
-                    <p class="card-text">¥<%= (item.price.to_s(:delimited)) %></p>
-                    
+                      <p class="card-text">
+                        <%= image_tag item.image, size: '150x100' %>
+                      </p>
+                      <p class="card-text text-dark"><%= item.name %></p>
+                      <p class="card-text text-dark">¥<%= (item.price.to_s(:delimited)) %></p>
                     </div>
                   <% end %>
-                
                 <% end %>
-                
               </div>
+          </div>
+          
+          <div class="text-md-right pd-3">
+            <%= link_to "全ての商品を見る >", items_path %>
           </div>
         </div>
       </div>
   </div>
-  <div　class="text-right row">
-      <%= link_to "全ての商品を見る >", items_path %>
-  </div>
+

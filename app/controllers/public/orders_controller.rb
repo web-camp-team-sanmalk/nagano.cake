@@ -1,4 +1,6 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_customer!
+  before_action :ensure_correct_customer,only: [:show]
   def new
     @order = Order.new
   end
@@ -11,7 +13,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    @orders = current_customer.orders
+    
     @order = Order.find(params[:id])
   end
 
@@ -65,4 +67,11 @@ class Public::OrdersController < ApplicationController
     params.require(:order).permit(:payment_method, :postal_code, :address, :name, :shipping_cost, :total_payment)
   end
 
+  def ensure_correct_customer
+    @order = Order.find(params[:id])
+    @customer = Customer.find(@order.customer_id)
+    unless @customer == current_customer
+      redirect_to customer_path(current_customer)
+    end
+  end
 end

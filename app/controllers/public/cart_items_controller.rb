@@ -1,5 +1,6 @@
 class Public::CartItemsController < ApplicationController
-
+  before_action :authenticate_customer!
+  before_action :ensure_correct_customer,only: [:update, :destroy]
   def index
     @cart_items = current_customer.cart_items.all
     @total = 0
@@ -47,6 +48,14 @@ class Public::CartItemsController < ApplicationController
 
   def cart_item_params
     params.require(:cart_item).permit(:amount,:item_id,:customer_id)
+  end
+  
+  def ensure_correct_customer
+    @cart_item = CartItem.find(params[:id])
+    @customer = Customer.find(@cart_item.customer_id)
+    unless @customer == current_customer
+      redirect_to customer_path(current_customer)
+    end
   end
 
 

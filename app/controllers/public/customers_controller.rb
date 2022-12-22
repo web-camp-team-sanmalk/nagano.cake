@@ -1,4 +1,6 @@
 class Public::CustomersController < ApplicationController
+  before_action :authenticate_customer!
+  before_action :ensure_correct_customer,except: [:unsubscribe, :withdrawal]
   def show
     @customer = Customer.find(params[:id])
   end
@@ -33,5 +35,12 @@ class Public::CustomersController < ApplicationController
 
   def customer_params
    params.require(:customer).permit(:is_deleted, :last_name, :first_name, :last_name_kana, :first_name_kana,:telephone_number, :email, :password, :postal_code, :address)
+  end
+  
+  def ensure_correct_customer
+    @customer = Customer.find(params[:id])
+    unless @customer == current_customer
+      redirect_to customer_path(current_customer)
+    end
   end
 end

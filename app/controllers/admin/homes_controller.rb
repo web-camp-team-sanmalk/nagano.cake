@@ -8,7 +8,7 @@ class Admin::HomesController < ApplicationController
       #オーダーのデーター全部
       @orders = Order.page(params[:page]).per(10)
     end
-    @orders_page = Order.page(params[:page]).per(10)
+     @orders_page = Order.page(params[:page]).per(10)
   end
   
 end

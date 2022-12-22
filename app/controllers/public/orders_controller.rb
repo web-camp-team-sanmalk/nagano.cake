@@ -1,6 +1,7 @@
 class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
   before_action :ensure_correct_customer,only: [:show]
+  before_action :cart_item_empty,only:  [:new, :confirm, :create]
   def new
     @order = Order.new
   end
@@ -71,6 +72,16 @@ class Public::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @customer = Customer.find(@order.customer_id)
     unless @customer == current_customer
+      redirect_to customer_path(current_customer)
+    end
+  end
+  
+  def cart_item_empty
+    @cart_items = current_customer.cart_items.all
+    
+    if @cart_items.present?
+      
+    else 
       redirect_to customer_path(current_customer)
     end
   end

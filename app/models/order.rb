@@ -30,6 +30,7 @@ class Order < ApplicationRecord
     elsif self.status == "入金待ち"
       self.order_details.each do |order_details|
         order_details.update(production_status: "着手不可")
+        
 
       end
     end

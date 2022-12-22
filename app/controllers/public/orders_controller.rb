@@ -1,7 +1,7 @@
 class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
-  before_action :ensure_correct_customer,only: [:show]
-  before_action :cart_item_empty,only:  [:new, :confirm, :create]
+  before_action :ensure_correct_customer, only: [:show]
+  before_action :cart_item_empty, only:[:new, :confirm, :create]
   def new
     @order = Order.new
   end
@@ -14,7 +14,6 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    
     @order = Order.find(params[:id])
   end
 
@@ -40,6 +39,7 @@ class Public::OrdersController < ApplicationController
       @total = cart_item.item.add_tax_price * cart_item.amount + @total
     end
   end
+
 
   def create
     @cart_items = current_customer.cart_items.all
@@ -69,19 +69,23 @@ class Public::OrdersController < ApplicationController
   end
 
   def ensure_correct_customer
-    @order = Order.find(params[:id])
-    @customer = Customer.find(@order.customer_id)
-    unless @customer == current_customer
-      redirect_to customer_path(current_customer)
+    if params[:id] == confirm
+
+    else
+      @order = Order.find(params[:id])
+      @customer = Customer.find(@order.customer_id)
+      unless @customer == current_customer
+        redirect_to customer_path(current_customer)
+      end
     end
   end
-  
+
   def cart_item_empty
     @cart_items = current_customer.cart_items.all
-    
+
     if @cart_items.present?
-      
-    else 
+
+    else
       redirect_to customer_path(current_customer)
     end
   end

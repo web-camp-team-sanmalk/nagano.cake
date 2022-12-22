@@ -35,7 +35,7 @@ class Public::CartItemsController < ApplicationController
 # カートに別タイミングで同商品を入れたときにカート内で個数が統合されるコード
     @cart_items = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
     if @cart_items.present?
-       @cart_item.amount = @cart_items.amount + @cart_item.amount 
+       @cart_item.amount = @cart_items.amount + @cart_item.amount
        @cart_items.destroy
     end
           @cart_item.save
@@ -49,7 +49,7 @@ class Public::CartItemsController < ApplicationController
   def cart_item_params
     params.require(:cart_item).permit(:amount,:item_id,:customer_id)
   end
-  
+
   def ensure_correct_customer
     @cart_item = CartItem.find(params[:id])
     @customer = Customer.find(@cart_item.customer_id)

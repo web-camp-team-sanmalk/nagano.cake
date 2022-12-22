@@ -2,12 +2,12 @@ class Order < ApplicationRecord
 
   belongs_to :customer
   has_many :order_details, dependent: :destroy
-  
-  validates :customer_id, :address,:status, :shipping_cost, :payment_method, :total_payment, presence: true 
-  validates :postal_code, length: {is: 7}, numericality: { only_integer: true } 
+
+  validates :customer_id, :address,:status, :shipping_cost, :payment_method, :total_payment, presence: true
+  validates :postal_code, length: {is: 7}, numericality: { only_integer: true }
   validates :shipping_cost, :total_payment, numericality: { only_integer: true }
-  
-  
+
+
   enum payment_method: { credit_card: 0, transfer: 1 }
 
   enum status: {入金待ち:0, 入金確認:1,  製作中:2, 発送準備中:3, 発送済み:4}
@@ -30,14 +30,14 @@ class Order < ApplicationRecord
     elsif self.status == "入金待ち"
       self.order_details.each do |order_details|
         order_details.update(production_status: "着手不可")
-        
+
 
       end
     end
   end
 
   def address_display
-    '〒' + self.postal_code + ' ' + self.address + ' ' + self.name
+    '〒' + self.postal_code + ' ' + self.address
   end
 end
 

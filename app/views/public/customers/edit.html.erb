@@ -5,36 +5,38 @@
     </div>
   </div>
 
-  <div class="row my-3">
-    <div class="offset-2 col-12">
+  <div class="offset-2 row mt-4 ml4">
+    <div class="col-xs-12 ml-3">
       <%= form_with model: @customer, url: customer_path do |f| %>
         <table class="table table-borderless">
-          <tr class="">
-            <td><%= f.label :氏名, class: "brown-border col-4" %></td>
-            <td><%= f.text_field :last_name, class: "form-control col-4"%></td>
-            <td><%= f.text_field :first_name, class: "form-control col-4"%></td>
-          </tr>
-          <tr class="">
-            <td><%= f.label :フリガナ, class: "brown-border px-3" %></td>
-            <td><%= f.text_field :last_name_kana, class: "form-control col-4"%></td>
-            <td><%= f.text_field :first_name_kana, class: "form-control col-4"%></td>
-          </tr>
-          <tr class="">
-            <td><%= f.label :郵便番号, class: "brown-border px-3" %></td>
-            <td><%= f.text_field :postal_code, class: "form-control col-8"%></td>
-          </tr>
-          <tr class="">
-            <td><%= f.label :住所, class: "brown-border px-3" %></td>
-            <td><%= f.text_field :address, class: "form-control col-8"%></td>
-          </tr>
-          <tr class="">
-            <td><%= f.label :電話番号, class: "brown-border px-3" %></td>
-            <td><%= f.text_field :telephone_number, class: "form-control col-4"%></td>
-          </tr>
-          <tr class="">
-            <td><%= f.label :メールアドレス, class: "brown-border px-3" %></td>
-            <td><%= f.email_field :email, class: "form-control col-4"%></td>
-          </tr>
+          <tbody>
+            <tr>
+              <td style="width: 30%"><%= f.label :full_name, "氏名" %></td>
+              <td><%= f.text_field :last_name, class: "form-control last_name"%></td>
+              <td><%= f.text_field :first_name, class: "form-control first_name"%></td>
+            </tr>
+            <tr>
+              <td style="width: 30%"><%= f.label :full_name_kana, "フリガナ" %></td>
+              <td><%= f.text_field :last_name_kana, class: "form-control last_name_kana"%></td>
+              <td><%= f.text_field :first_name_kana, class: "form-control first_name_kana"%></td>
+            </tr>
+            <tr>
+              <td style="width: 30%"><%= f.label :postal_code, "郵便番号" %></td>
+              <td><%= f.text_field :postal_code, class: "form-control postal_code"%></td>
+            </tr>
+            <tr>
+              <td style="width: 30%"><%= f.label :address, "住所" %></td>
+              <td><%= f.text_field :address, class: "form-control address"%></td>
+            </tr>
+            <tr>
+              <td style="width: 30%"><%= f.label :telephone_number, "電話番号" %></td>
+              <td><%= f.text_field :telephone_number, class: "form-control telephone_number"%></td>
+            </tr>
+            <tr>
+              <td style="width: 30%"><%= f.label :email, "メールアドレス" %></td>
+              <td><%= f.email_field :email, class: "form-control email"%></td>
+            </tr>
+          </tbody>
         </table>
 
         <div class="col-xs-10 mt-3">

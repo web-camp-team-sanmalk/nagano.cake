@@ -1,35 +1,5 @@
-<div class="offset-2 mb-5">
-	<mark class="h4 bg-light ml-5 mb-5">注文履歴一覧</mark>
-</div>
-<div class="container my-4">
-  <div class="row">
-    <div class="col-md-10 my-1">
-      <table class="table-light table">
-        <thead class="thead-light">
-          <tr>
-            <th>購入日時</th>
-            <th>購入者</th>
-            <th>注文個数</th>
-            <th>注文ステータス</th>
-          </tr>
-        </thead>
-        <tbody>
-        <% @orders.each do |order| %>
-          <tr>
-            <td><%= link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S'), admin_order_path(order) %></td>
-            <td><%= order.customer.last_name + order.customer.first_name %></td>
-            <td><%= order.order_details.sum(:amount) %></td>
-            <td><%= order.status %></td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
-
-    </div>
-  </div>
-  <div class="row">
-    <div class="center-block mx-auto">
-      <%= paginate @orders %>
-    </div>
-  </div>
-</div>
+<% if @num == 1 %>
+ <%= render 'top2', orders: @orders, orders_page: @orders_page, customer: @customer  %>
+<% else %>
+ <%= render 'top', orders: @orders, orders_page: @orders_page  %>
+<% end %>

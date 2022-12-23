@@ -1,22 +1,22 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <h2>配送先登録/一覧</h2>
+    <div class="col-sm-12  px-sm-0 mx-auto">
+      <h2 class="red-border">配送先登録/一覧</h2>
       <%= form_with model: @address, url: address_path do |f| %>
         <table class='table table-borderless'>
           <tbody>
             <tr>
-              <td><%= f.label :postal_code, "郵便番号(ハイフンなし)" %></td>
-              <td><%= f.text_field :postal_code %></td>
+              <td style= "width:20%"><%= f.label :postal_code, "郵便番号(ハイフンなし)" %></td>
+              <td><%= f.text_field :postal_code, class: "form-control col-5 ", placeholder: "0000000" %></td>
             </tr>
             <tr>
-              <td><%= f.label :address, "住所" %></td>
-              <td><%= f.text_field :address %></td>
+              <td style= "width:20%"><%= f.label :address, "住所" %></td>
+              <td><%= f.text_field :address,class: "form-control" %></td>
             </tr>
             <tr>
-              <td><%= f.label :name, "宛名" %></td>
-              <td><%= f.text_field :name %></td>
-              <td><%= f.submit "変更内容を保存" %></td>
+              <td style= "width:20%"><%= f.label :name, "宛名" %></td>
+              <td><%= f.text_field :name, class: "form-control col-5 " %></td>
+              <td><%= f.submit "変更内容を保存" ,class: "btn btn-sm btn-success " %></td>
             </tr>
           </tbody>
         </table>

@@ -2,34 +2,32 @@
 
 
 <div class="container">
-  <div class="row">
-    <div class="">
-      <h2>商品一覧</h2>
+  <div class="col-12">
+    <div class="row justify-content-between ">
+      <h4 class="col-md-4 col-sm-2 bg-light text-center">商品一覧</h4>
+        <div class="col-8 text-center"><%= link_to "+", new_admin_item_path, class:"btn btn-light rounded-circle p-0 text-black-50 shadow " ,style:"width:2rem;height:2rem;"%></div>
     </div>
-      <div class=""><!--右上のプラス＋ボタン-->
-        <%= link_to "+", new_admin_item_path, class:"" %>
-      </div>
-        <table class="table table-hover table-inverse">
-          <thead>
-            <tr>
-              <th>商品ID</th>
-              <th>商品名</th>
-              <th>税抜価格</th>
-              <th>ジャンル</th>
-              <th>ステータス</th>
-            </tr>
-          </thead>
+      <table class="table table-hover table-inverse mt-4">
+        <thead>
+          <tr class="table-secondary">
+            <th>商品ID</th>
+            <th>商品名</th>
+            <th>税抜価格</th>
+            <th>ジャンル</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
           <tobody>
             <% @items.each do |item| %>
-              <tr>
+              <tr class="">
                 <td><%= item.id %></td>
-                <td><%= link_to item.name, admin_item_path(item.id) %></td>
+                <td><%= link_to item.name, admin_item_path(item.id) ,class:"text-dark" %></td>
                 <td><%= item.price.to_s(:delimited) %></td><!--.to_s(:delimited)はカンマつけるメゾット-->
                 <td><%= item.genre.name %></td>
                 <% if item.is_active == true  %>
-                  <td class="">販売中</td>
+                  <td class="text-success ">販売中</td>
                 <% else %>
-                  <td class="">販売停止</td>
+                  <td class="text-black-50 ">販売停止</td>
                 <% end %>
               </tr>
             <% end %>

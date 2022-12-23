@@ -1,6 +1,6 @@
 class Public::AddressesController < ApplicationController
-
-  # before_action :ensure_correct_customer
+  before_action :authenticate_customer!
+  before_action :ensure_correct_customer, only:[:edit, :update, :destroy]
 
   def index
     @addresses = current_customer.addresses.all
@@ -46,10 +46,11 @@ class Public::AddressesController < ApplicationController
   end
 
   # ログインしているユーザーの住所編集画面かの判断
-  # def ensure_correct_customer
-    # @customer = Customer.find(params[:id])
-    # unless @customer == current_customer
-      # redirect_to customer_path(current_customer)
-    # end
-  # end
+  def ensure_correct_customer
+    @address = Address.find(params[:id])
+    @customer = Customer.find(@address.customer_id)
+    unless @customer == current_customer
+      redirect_to customer_path(current_customer)
+    end
+  end
 end

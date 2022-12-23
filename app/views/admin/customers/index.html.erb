@@ -1,31 +1,42 @@
-
-<div class='container px-5 px-sm-0'>
-  <div class='col-md-12'>
-    <h1>会員一覧</h1>
-    <table class='table'>
-      <thead>
-        <tr>
-          <th>会員ID</th>
-          <th>氏名</th>
-          <th>メールアドレス</th>
-          <th>ステータス</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @customers.each do |customer| %>
-          <tr>
-            <td><%= customer.id %></td>
-            <td><%= link_to customer.full_name, admin_customer_path(customer.id) %></td>
-            <td><%= customer.email %></td>
-            <% if customer.is_deleted == false %>
-              <td class='text-success'>有効</td>
-            <% else %>
-              <td class='text-secoundary'>退会</td>
-            <% end %>
+<div class="offset-1">
+	<div class="ml-5">
+	  <div class="ml-5">
+	    <mark class="h4 bg-light ml-5 mb-5">会員一覧</mark>
+	  </div>
+	</div>
+</div>
+<div class='container px-5 px-sm-0 mt-3'>
+  <div class='row'>
+    <div class='col-md-2'></div>
+    <div class='col-md-8'>
+      <table class='table table-bordered border-dark'>
+        <thead>
+          <tr class="table-secondary">
+            <th>会員ID</th>
+            <th>氏名</th>
+            <th>メールアドレス</th>
+            <th>ステータス</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <%= paginate @customers %>
+        </thead>
+        <tbody>
+          <% @customers.each do |customer| %>
+            <tr>
+              <td><%= customer.id %></td>
+              <td><%= link_to customer.full_name, admin_customer_path(customer.id) %></td>
+              <td><%= customer.email %></td>
+              <% if customer.is_deleted == false %>
+                <td class='text-success'>有効</td>
+              <% else %>
+                <td class='text-secoundary'>退会</td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div class="d-flex justify-content-center">
+        <%= paginate @customers %>
+      </div>
+    </div>
+    <div class='col-md-2'></div>
   </div>
 </div>

@@ -3,6 +3,7 @@
     <div class="row">
         <div class="col-6">
             <%= form_with model: [:admin, @genre], local: true do |f| %>
+            <%= render 'admin/items/error', item: @genre %>
             <table class="col-sm-9 col-lg-12">
               <thead>
                 <tr>

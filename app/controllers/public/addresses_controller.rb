@@ -18,7 +18,6 @@ class Public::AddressesController < ApplicationController
       redirect_to addresses_path
     else
       @addresses = current_customer.addresses.all
-      @address = Address.new
       render :index
     end
   end

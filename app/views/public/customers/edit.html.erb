@@ -8,6 +8,7 @@
   <div class="offset-2 row mt-4 ml4">
     <div class="col-xs-12 ml-3">
       <%= form_with model: @customer, url: customer_path do |f| %>
+      <%= render 'admin/items/error', item: @customer %>
         <table class="table table-borderless">
           <tbody>
             <tr>

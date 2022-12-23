@@ -12,7 +12,7 @@
             <p class="h5 font-weight-bold">¥ <%= @item.price.to_s(:delimited) %><span class="small">(税込)</span></p>
               <div class="row">
                 <div class="col-md-6">
-                  <%= f.select :amount, *[1..10], include_blank: "個数選択" %> 個
+                  <%= f.select :amount, *[1..10] %> 個
                 </div>
                   <div class="col-md-6">
                     <%= f.submit "カートに入れる", class: "btn btn-success"  %>
@@ -21,4 +21,4 @@
         <% end %>
   </div>
 </div>
-    
+

@@ -70,7 +70,6 @@ class Public::OrdersController < ApplicationController
 
   def ensure_correct_customer
     if params[:id] == confirm
-
     else
       @order = Order.find(params[:id])
       @customer = Customer.find(@order.customer_id)
@@ -82,7 +81,6 @@ class Public::OrdersController < ApplicationController
 
   def cart_item_empty
     @cart_items = current_customer.cart_items.all
-
     if @cart_items.present?
 
     else

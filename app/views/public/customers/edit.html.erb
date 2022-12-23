@@ -6,39 +6,40 @@
   </div>
 
   <div class="row my-3">
-    <div class="offset-3 col-6">
+    <div class="offset-2 col-12">
       <%= form_with model: @customer, url: customer_path do |f| %>
-        <tarble>
-          <tr class="col-xs-2">
-            <td><%= f.label :氏名, class: "brown-border" %></td>
+        <table class="table table-borderless">
+          <tr class="">
+            <td><%= f.label :氏名, class: "brown-border col-4" %></td>
             <td><%= f.text_field :last_name, class: "form-control col-4"%></td>
             <td><%= f.text_field :first_name, class: "form-control col-4"%></td>
           </tr>
-          <tr class="col-xs-2">
+          <tr class="">
             <td><%= f.label :フリガナ, class: "brown-border px-3" %></td>
-            <td><%= f.text_field :last_name_kana, class: "form-control col-4"%>  <%= f.text_field :first_name_kana, class: "form-control col-4"%></td>
+            <td><%= f.text_field :last_name_kana, class: "form-control col-4"%></td>
+            <td><%= f.text_field :first_name_kana, class: "form-control col-4"%></td>
           </tr>
-          <tr class="col-xs-2">
+          <tr class="">
             <td><%= f.label :郵便番号, class: "brown-border px-3" %></td>
             <td><%= f.text_field :postal_code, class: "form-control col-8"%></td>
           </tr>
-          <tr class="col-xs-2">
+          <tr class="">
             <td><%= f.label :住所, class: "brown-border px-3" %></td>
             <td><%= f.text_field :address, class: "form-control col-8"%></td>
           </tr>
-          <tr class="col-xs-2">
+          <tr class="">
             <td><%= f.label :電話番号, class: "brown-border px-3" %></td>
-            <td><%= f.text_field :telephone_number, class: "form-control col-8"%></td>
+            <td><%= f.text_field :telephone_number, class: "form-control col-4"%></td>
           </tr>
-          <tr class="col-xs-2">
+          <tr class="">
             <td><%= f.label :メールアドレス, class: "brown-border px-3" %></td>
-            <td><%= f.email_field :email, class: "form-control col-8"%></td>
+            <td><%= f.email_field :email, class: "form-control col-4"%></td>
           </tr>
-        </tarble>
+        </table>
 
         <div class="col-xs-10 mt-3">
           <p>
-            <%= f.submit "編集内容を保存", class: "btn btn-success btn-sm w-75", style: "margin: 10px;" %>
+            <%= f.submit "編集内容を保存", class: "btn btn-success btn-sm w-25", style: "margin: 10px;" %>
             <%= link_to "退会する" , customers_unsubscribe_path(@customer), class: "btn btn-danger btn-sm ml-5", style: "margin: 10px;" %>
           </p>
         </div>

@@ -6,6 +6,10 @@ class Admin::OrdersController < ApplicationController
     @order_details = @order.order_details.all
   end
 
+  def top
+    @orders = Order.page(params[:page])
+  end
+
   def update
     order = Order.find(params[:id])
     order.update(order_params)

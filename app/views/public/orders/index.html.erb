@@ -1,16 +1,18 @@
+<div class="offset-2 mb-5">
+	<mark class="h4 bg-light ml-5 mb-5">注文履歴一覧</mark>
+</div>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h4 class="mt-3">注文履歴一覧</h4>
-      <table class="table-light table table-hover">
+      <table class="table-light table">
         <thead class="table-secondary">
           <tr>
             <th>注文日</th>
             <th>配送先</th>
             <th>注文商品</th>
-            <th>支払い金額</th>
+            <th>支払金額</th>
             <th>ステータス</th>
-            <th></th>
+            <th>注文詳細</th>
           </tr>
         </thead>
         <tbody>
@@ -29,7 +31,7 @@
             </td>
             <td><%= order.total_payment %>円</td>
             <td><%= order.status %></td>
-            <td><%= link_to "表示する", order_path(order), class: "btn btn-dark btn-sm" %></td>
+            <td><%= link_to "表示する", order_path(order), class: "btn btn-primary btn-sm" %></td>
           </tr>
         <% end %>
         </tbody>

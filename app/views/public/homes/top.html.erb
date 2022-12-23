@@ -2,17 +2,9 @@
   <div class ="container">
     <div class="row">
       <div class="col-sm-2">
-        <div class="card">
-          <div class="card-header">ジャンル検索</div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">ケーキ</li>
-                  <li class="list-group-item">焼き菓子</li>
-                  <li class="list-group-item">プリン</li>
-                  <li class="list-group-item">キャンディー</li>
-              </ul>
-        </div>
+        
       </div>
-    　<div class="col-sm-8 ">
+    　<div class="col-sm-10 ">
         <div calss ="d-flex align-items-center" style="height:300px">
           <div class="card" style="max-width: 500px;">
           <img class="card-img img-fluid" src="/assets/home.png">
@@ -32,7 +24,7 @@
             <!--カードを詳細リンクにする記述-->
 
               <div class="card-group">
-                <% @item.each do |item| %>
+                <% @item.first(4).each do |item| %>
                   <%= link_to item_path(item.id) do %>
                     <div class="card-body">
                       <p class="card-text">

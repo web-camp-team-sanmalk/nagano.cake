@@ -3,6 +3,7 @@
     <div class="col-sm-12  px-sm-0 mx-auto">
       <h2 class="red-border">配送先登録/一覧</h2>
       <%= form_with model: @address, url: address_path do |f| %>
+      <%= render 'admin/items/error', item: @address %>
         <table class='table table-borderless'>
           <tbody>
             <tr>

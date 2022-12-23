@@ -14,4 +14,8 @@ class Admin::HomesController < ApplicationController
      @orders_page = Order.page(params[:page]).per(10)
   end
   
+  def top
+    @orders = Order.page(params[:page])
+  end
+  
 end

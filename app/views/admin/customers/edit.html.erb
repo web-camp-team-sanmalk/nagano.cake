@@ -8,6 +8,7 @@
 <div class='container'>
   <div class='row mt-4 ml-4'>
     <%= form_with model:@customer,url: admin_customer_path, local:true do |f| %>
+    <%= render 'admin/items/error', item: @customer %>
     <div class="col-md-12 ml-3">
       <table class='table table-borderless'>
         <tbody>

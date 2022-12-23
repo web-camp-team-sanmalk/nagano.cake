@@ -1,5 +1,5 @@
 <% if @num == 1 %>
- <%= render 'top2', orders: @orders, orders_page: @orders_page, customer: @customer  %>
+ <%= render 'top2', orders: @orders, customer: @customer  %>
 <% else %>
- <%= render 'top', orders: @orders, orders_page: @orders_page  %>
+ <%= render 'top', orders: @orders %>
 <% end %>

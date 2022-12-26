@@ -65,17 +65,14 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:payment_method, :postal_code, :address, :name, :shipping_cost, :total_payment)
+    params.permit(:payment_method, :postal_code, :address, :name, :shipping_cost, :total_payment)
   end
 
   def ensure_correct_customer
-    if params[:id] == confirm
-    else
-      @order = Order.find(params[:id])
-      @customer = Customer.find(@order.customer_id)
-      unless @customer == current_customer
-        redirect_to customer_path(current_customer)
-      end
+    @order = Order.find(params[:id])
+    @customer = Customer.find(@order.customer_id)
+    unless @customer == current_customer
+      redirect_to customer_path(current_customer)
     end
   end
 
